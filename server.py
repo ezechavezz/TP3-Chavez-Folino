@@ -1,6 +1,6 @@
 import socket
 
-def iniciar():
+def iniciar_server():
     socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     
     direccion = ('', 12345)
@@ -19,4 +19,4 @@ def iniciar():
     conexion.close()
 
 if __name__ == "__main__":
-    iniciar()
+    iniciar_server()
