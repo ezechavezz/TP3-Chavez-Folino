@@ -1,16 +1,16 @@
 import socket
 
 def iniciar_server():
-    socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     
     direccion = ('', 12345)
-    socket.bind(direccion)
+    server_socket.bind(direccion)
     
-    socket.listen(1)
+    server_socket.listen(1)
     
     print("Servidor iniciado.")
     
-    conexion, cliente = socket.accept()
+    conexion, cliente = server_socket.accept()
     print(f"Conexión establecida desde {cliente}")
     
     datos = conexion.recv(1024)
