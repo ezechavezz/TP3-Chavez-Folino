@@ -1,22 +1,16 @@
 import socket
 
-def iniciar_server_tcp():
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+def iniciar_server_udp():
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     
     direccion = ('', 12345)
     server_socket.bind(direccion)
     
-    server_socket.listen(1)
+    print("Servidor UDP iniciado.")
     
-    print("Servidor TCP iniciado.")
-    
-    conexion, cliente = server_socket.accept()
-    print(f"Conexión TCP establecida desde {cliente}")
-    
-    datos = conexion.recv(1024)
-    print("Datos TCP recibidos:", datos)
-
-    conexion.close()
+    while True:
+        datos, direccion_cliente = server_socket.recvfrom(1024)
+        print(f"Datos UDP recibidos de {direccion_cliente}: {datos.decode()}")
 
 if __name__ == "__main__":
-    iniciar_server_tcp()
+    iniciar_server_udp()
